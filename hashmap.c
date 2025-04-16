@@ -43,7 +43,6 @@ void insertMap(HashMap * map, char * key, void * value) {
     if (map->size / map->capacity >= 0.7) enlarge(map);
 
     long pos = hash(key, map->capacity);
-    long original = pos;
 
     do{
         if(map->buckets[pos] == NULL || map->buckets[pos]->key == NULL){
@@ -53,7 +52,7 @@ void insertMap(HashMap * map, char * key, void * value) {
             return;
         }
         pos = (pos + 1) % map->capacity;
-    }while(original != pos);
+    }while(1);
 }
 
 void enlarge(HashMap * map) {
