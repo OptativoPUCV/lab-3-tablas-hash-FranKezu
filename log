@@ -114,3 +114,43 @@ Wed, Apr 16, 2025  9:26:14 AM:
  tests:  1|5
 total_score: 10/70
 a8d6e10
+Wed, Apr 16, 2025 11:54:41 AM: 
+ hashmap.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+Compilation failed
+In file included from test.c:4:
+hashmap.c: In function 'insertMap':
+hashmap.c:44:60: warning: comparison between pointer and integer
+   44 |     if(map->buckets[pos] == NULL || map->buckets[pos]->key == -1){
+      |                                                            ^~
+hashmap.c: In function 'enlarge':
+hashmap.c:56:5: error: unknown type name 'hashElem'
+   56 |     hashElem **viejo = map->hashArray;
+      |     ^~~~~~~~
+hashmap.c:56:27: error: 'HashMap' {aka 'struct HashMap'} has no member named 'hashArray'
+   56 |     hashElem **viejo = map->hashArray;
+      |                           ^~
+hashmap.c:58:8: error: 'HashMap' {aka 'struct HashMap'} has no member named 'hashArray'
+   58 |     map->hashArray = (hashElem **) malloc(map->capacity, sizeof(hasElem *));
+      |        ^~
+hashmap.c:58:23: error: 'hashElem' undeclared (first use in this function)
+   58 |     map->hashArray = (hashElem **) malloc(map->capacity, sizeof(hasElem *));
+      |                       ^~~~~~~~
+hashmap.c:58:23: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:58:34: error: expected expression before ')' token
+   58 |     map->hashArray = (hashElem **) malloc(map->capacity, sizeof(hasElem *));
+      |                                  ^
+hashmap.c:62:40: error: request for member 'key' in something not a structure or union
+   62 |         if(viejo[i] != NULL && viejo[i]->key != NULL) insertMap(map, viejo[i]->key, viejo[i]->data);
+      |                                        ^~
+hashmap.c:62:78: error: request for member 'key' in something not a structure or union
+   62 |         if(viejo[i] != NULL && viejo[i]->key != NULL) insertMap(map, viejo[i]->key, viejo[i]->data);
+      |                                                                              ^~
+hashmap.c:62:93: error: request for member 'data' in something not a structure or union
+   62 |         if(viejo[i] != NULL && viejo[i]->key != NULL) insertMap(map, viejo[i]->key, viejo[i]->data);
+      |                                                                                             ^~
+test.c: At top level:
+test.c:8:8: warning: '_strdup' redeclared without dllimport attribute: previous dllimport ignored [-Wattributes]
+    8 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+631c7b3
