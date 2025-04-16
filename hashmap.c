@@ -16,14 +16,14 @@ struct HashMap {
     long current; //indice del ultimo dato accedido
 };
 
-Pair * createPair( char * key,  void * value) {
+Pair * createPair(char * key,  void * value) {
     Pair * new = (Pair *)malloc(sizeof(Pair));
     new->key = key;
     new->value = value;
     return new;
 }
 
-long hash( char * key, long capacity) {
+long hash(char * key, long capacity) {
     unsigned long hash = 0;
      char * ptr;
     for (ptr = key; *ptr != '\0'; ptr++) {
@@ -40,7 +40,14 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
-
+    long pos = hash(key, map->capacity);
+    if(map->buckets[pos] == NULL || map->buckets[pos]->key == -1){
+        Pair *elem = createPair(key, value);
+        map->buckets[pos] = elem;
+    }
+    else{
+        pos++;
+    }
 
 }
 
