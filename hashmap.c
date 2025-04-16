@@ -40,7 +40,7 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
-    if (map->size / map->capacity >= 0.7) enlarge(map);
+    if ((float) map->size / map->capacity >= 0.7) enlarge(map);
 
     long pos = hash(key, map->capacity);
 
