@@ -53,13 +53,13 @@ void insertMap(HashMap * map, char * key, void * value) {
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
 
-    hashElem **viejo = map->hashArray;
+    Pair **viejo = map->buckets;
     map->capacity *= 2;
-    map->hashArray = (hashElem **) malloc(map->capacity, sizeof(hasElem *));
+    map->buckets = (Pair **) calloc(map->capacity, sizeof(Pair *));
     map->size = 0;
 
     for(long i = 0; i < (map->capacity/2); i++)
-        if(viejo[i] != NULL && viejo[i]->key != NULL) insertMap(map, viejo[i]->key, viejo[i]->data);
+        if(viejo[i] != NULL && viejo[i]->key != NULL) insertMap(map, viejo[i]->key, viejo[i]->value);
     free(viejo);    
 }
 
