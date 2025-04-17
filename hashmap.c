@@ -90,8 +90,10 @@ void eraseMap(HashMap * map,  char * key) {
         if(map->buckets[pos] == NULL) return NULL;
 
         if(is_equal(key, map->buckets[pos]->key)){
+            free(map->buckets[pos]->key);
             map->buckets[pos]->key = NULL;
             map->size--;
+            map->current = pos;
             return;
         }
         pos = (pos + 1) % map->capacity;
