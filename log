@@ -357,3 +357,20 @@ test.c:8:8: warning: '_strdup' redeclared without dllimport attribute: previous 
     8 | char * _strdup(const char * str) {
       |        ^~~~~~~
 b316d7b
+Wed, Apr 16, 2025  9:50:07 PM: 
+ hashmap.c | 2 --
+ 1 file changed, 2 deletions(-)
+Compilation failed
+In file included from test.c:4:
+hashmap.c: In function 'eraseMap':
+hashmap.c:90:46: error: 'return' with a value, in function returning void [-Wreturn-mismatch]
+   90 |         if(map->buckets[pos] == NULL) return NULL;
+      |                                              ^~~~
+hashmap.c:85:6: note: declared here
+   85 | void eraseMap(HashMap * map,  char * key) {
+      |      ^~~~~~~~
+test.c: At top level:
+test.c:8:8: warning: '_strdup' redeclared without dllimport attribute: previous dllimport ignored [-Wattributes]
+    8 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+a6b378c

@@ -98,8 +98,6 @@ void eraseMap(HashMap * map,  char * key) {
         }
         pos = (pos + 1) % map->capacity;
     }while(original != pos);
-
-    return NULL;
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
