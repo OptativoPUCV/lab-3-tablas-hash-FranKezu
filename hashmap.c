@@ -130,12 +130,10 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-    long pos = map->current;
-    long inicio = map->current;
+    long pos = map->current + 1;
+    long inicio = map->current - 1;
 
     do{
-        if(map->buckets[pos] == NULL) return NULL;
-
         if (map->buckets[pos] != NULL && map->buckets[pos]->key != NULL){
             map->current = pos;
             return map->buckets[pos]->value;
