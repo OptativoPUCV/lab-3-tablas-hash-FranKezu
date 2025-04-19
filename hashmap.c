@@ -130,7 +130,7 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-    long pos = map->current + 1;
+    long pos = map->current;
     long inicio = map->current;
 
     do{
